@@ -16,6 +16,8 @@
   Constraints:
   1 <= nums.length <= 105
   -109 <= nums[i] <= 109
+
+  LeetCode Link: https://leetcode.com/problems/contains-duplicate/
 */
 class Solution {
 public:
