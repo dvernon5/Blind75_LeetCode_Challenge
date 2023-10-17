@@ -27,16 +27,19 @@
 
   LeetCode Link: https://leetcode.com/problems/number-of-1-bits/
 */
-int hammingWeight(uint32_t n) {
-  int result = 0;
-  while (n > 0) {
-    if (n & 1 != 0) {
-      // If the rightmost bit is 1, increment the count.
-      ++result;
+class Solution {
+public:
+  int hammingWeight(uint32_t n) {
+    int result = 0;
+    while (n > 0) {
+      if (n & 1 != 0) {
+        // If the rightmost bit is 1, increment the count.
+        ++result;
+      }
+      // Right shift the number by one bit to check the next bit. 
+      n = n >> 1;
     }
-    // Right shift the number by one bit to check the next bit. 
-    n = n >> 1;
+  
+    return result;
   }
-
-  return result;
-}
+};
