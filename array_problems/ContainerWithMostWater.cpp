@@ -37,21 +37,17 @@
 class Solution {
 public:
   int maxArea(vector<int>& height) {
-    int left = 0;
-    int right = height.size() - 1;
-    int max_area = 0;
+    size_t left = 0;
+    size_t right = height.size() - 1;
+    auto max_area = 0;
     while (left < right) {
-      int width = right - left;    // Calculate the width of the container.
-      int minimum_height = min(height[left], height[right]);  // Find the minimum height of the two walls
-      int current_area = width * minimum_height;  // Calculate the current area.
+      auto width = right - left;    // Calculate the width of the container.
+      auto minimum_height = min(height[left], height[right]);  // Find the minimum height of the two walls
+      auto current_area = width * minimum_height;  // Calculate the current area.
       max_area = max(max_area, current_area);  // Update the maximum area if the current area is larger. 
 
       // Move the pointer pointing to the shorter wall inward, as a taller wall will not increase the area. 
-      if (height[left] < height[right]) {
-        ++left;
-      } else {
-        --right;
-      }
+      height[left] < height[right] ? ++left : --right;
     }
 
     return max_area;
