@@ -36,14 +36,14 @@ public:
     sort(nums.begin(), nums.end());
     vector<vector<int>> result;
     size_t nums_size = nums.size(); // Store the size of the input array to avoid recomputation.
-    for (int current_index = 0; current_index < nums_size - 2; ++current_index) {
+    for (size_t current_index = 0; current_index < nums_size - 2; ++current_index) {
       // Skip duplicates to avoid duplicate triplets
       if (current_index == 0 || nums[current_index] != nums[current_index - 1]) {
-        int left = current_index + 1;
-        int right = nums.size() - 1;
-        int target = -1 * nums[current_index];
+        size_t left = current_index + 1;
+        size_t right = nums.size() - 1;
         while (left < right) {
-          int sum = nums[left] + nums[right];
+          auto target = -1 * nums[current_index];
+          auto sum = nums[left] + nums[right];
           if (sum == target) {
             // Found a valid triplet, add it to the result.
             result.push_back({ nums[current_index], nums[left], nums[right] });
