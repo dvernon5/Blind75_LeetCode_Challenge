@@ -33,10 +33,10 @@
 class Solution {
 public:
   int search(vector<int>& nums, int target) {
-    int left_index = 0;
-    int right_index = nums.size() - 1;
+    size_t left_index = 0;
+    size_t right_index = nums.size() - 1;
     while (left_index <= right_index) {
-      int middle_index = left_index + (right_index - left_index) / 2;
+      auto middle_index = left_index + (right_index - left_index) / 2;
       if (nums[middle_index] == target) {
         return middle_index;
       }
