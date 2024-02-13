@@ -35,10 +35,10 @@ nums is sorted and rotated between 1 and n times.
 class Solution {
 public:
   int findMin(vector<int>& nums) {
-    int low_index = 0;
-    int high_index = nums.size() - 1;
+    size_t low_index = 0;
+    size_t high_index = nums.size() - 1;
     while (low_index < high_index) {
-      int middle_index = low_index + (high_index - low_index) / 2;
+      auto middle_index = low_index + (high_index - low_index) / 2;
       if (nums[middle_index] > nums[high_index]) {
         low_index = middle_index + 1; 
       } else {
