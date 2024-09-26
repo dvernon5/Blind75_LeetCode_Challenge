@@ -23,25 +23,15 @@
 class Solution {
 public:
   int maxProduct(vector<int>& nums) {
-    int max_product = nums[0];  // Keep track of the maximum product.
-    int min_product = nums[0];  // Keep track of the minimum product.
+    int max_product = nums[0];
+    int min_product = nums[0];
     int result = nums[0];
-    size_t nums_size = nums.size(); 
-    for (int current_index = 1; current_index < nums_size; ++current_index) {
-      // Temporary variable to store the current maximum product. 
-      int temp_max_product = max_product;
-
-      // Update the maximum product by considering three possibilities:
-      // 1. The current number by itself.
-      // 2. The current number multiplied by the previous maximum product.
-      // 3. The current number multiplied by the previous minimum product. 
-      max_product = max({nums[current_index], max_product * nums[current_index], min_product * nums[current_index]});
-
-      // Update the minimum procut in a similar way as the maximum product.
-      min_product = min({nums[current_index], temp_max_product * nums[current_index], min_product * nums[current_index]});
-
-      // Update the final result by taking the maximum of the current result and the new maximum product. 
-      result = max(result, max_product);
+    int length = nums.size();
+    for (int i = 1; i < length; i++) {
+      int current_max = max_product;
+      max_product = max({ nums[i], nums[i] * max_product, nums[i] * min_product });
+      min_product = min({ nums[i], nums[i] * current_max, nums[i] * min_product });
+      result = max(result ,max_product);
     }
 
     return result;
