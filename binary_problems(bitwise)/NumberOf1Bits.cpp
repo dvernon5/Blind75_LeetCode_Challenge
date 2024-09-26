@@ -33,10 +33,8 @@ public:
     int result = 0;
     while (n > 0) {
       if (n & 1 != 0) {
-        // If the rightmost bit is 1, increment the count.
         ++result;
       }
-      // Right shift the number by one bit to check the next bit. 
       n = n >> 1;
     }
   
