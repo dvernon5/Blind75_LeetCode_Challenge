@@ -32,15 +32,15 @@
 class Solution {
 public:
   vector<int> countBits(int n) {
-    // Initialize an array to store the number of 1's for each number from 0 to n + 1.
-    vector<int> ans(n +1); 
-    for (size_t current_index = 1; current_index <= n; ++current_index) {
-      // To find the number of 1's in the binary respresentation of i: 
-      // 1. Right-shift i by 1 position (equivalent to dividing by 2) and get the count from ans.
-      // 2. Add 1 if the least significant bit (i & 1) is 1, else add 0.
-      ans[current_index] = ans[current_index >> 1] + (current_index & 1);
+    vector<int> ans(n + 1);
+    for (int i = 0; i <= n; i++) {
+        if (i % 2 == 0) {
+          ans[i] = ans[i / 2];
+        } else {
+          ans[i] = ans[i / 2] + 1;
+        }
     }
-      
+
     return ans;
   }
 };
