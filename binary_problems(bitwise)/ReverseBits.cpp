@@ -31,15 +31,10 @@ class Solution {
 public:
     uint32_t reverseBits(uint32_t n) {
       uint32_t n_reverse = 0;
-      int bit_position = 31;  // Start from the most significant bit (bit 31) and go to the least significant bit (bit 0).
+      int bit_position = 31;
       while (n > 0) {
-        // Get the least significant bit of n and add it to reverse.
         n_reverse = n_reverse | (n & 1) << bit_position;
-  
-        // Right shift n to get the next bit.
         n = n >> 1;
-  
-        // Mover to the next bit position.
         --bit_position;
       }
   
