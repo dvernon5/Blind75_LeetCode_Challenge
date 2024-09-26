@@ -23,28 +23,19 @@
 class Solution {
 public:
   vector<int> productExceptSelf(vector<int>& nums) {
-    size_t nums_size = nums.size();
-    vector<int> prefix_product(nums_size); // An array to store the product of prefixes.
-    prefix_product[0] = 1;
-    
-    // Calculate the product of prefixes.
-    for (size_t current_index = 1; current_index < nums_size; ++current_index) {
-      prefix_product[current_index] = prefix_product[current_index - 1] * nums[current_index - 1];
+    int length = nums.size();
+    vector<int> answer(length, 1);
+    int prefix = 1;
+    for (int i = 0; i < length; i++) {
+      answer[i] = prefix;
+      prefix *= nums[i];
     }
-    vector<int> suffix_product(nums_size); // An array to store the product of suffixes.
-    suffix_product[nums_size - 1] = 1;
-    
-    // Calculate the product of suffixes. 
-    for (size_t current_index = nums_size - 2; current_index >= 0; --current_index) {
-      suffix_product[current_index] = suffix_product[current_index + 1] * nums[current_index + 1];
+    int suffix = 1;
+    for (int i = length - 1; i >= 0; i--) {
+      answer[i] *= suffix;
+      suffix *= nums[i];
     }
 
-    // Calculate the result array by multiplying the corresponding prefix and suffix products. 
-    vector<int> result_array(nums_size);
-    for (size_t current_index = 0; current_index < nums_size; ++current_index) {
-      result_array[current_index] = prefix_product[current_index] * suffix_product[current_index];
-    }
-
-    return result_array;
+    return answer;
   }
 };
