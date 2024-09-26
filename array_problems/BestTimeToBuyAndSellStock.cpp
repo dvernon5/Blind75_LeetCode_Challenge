@@ -26,22 +26,14 @@ LeetCode Link: https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
 class Solution {
 public:
   int maxProfit(vector<int>& prices) {
-    int minimum_price = INT_MAX;  // To keep track of the minimum price seen so far.
+    int minimum_price = INT_MAX;
     int max_profit = 0;
-    size_t prices_size = prices.size();
-    for (size_t current_index = 0; current_index < prices_size; ++current_index) {
-      // Check if the current price is lower than the minimum price seen so far
-      if (prices[i] < minimum_price) {
-        // Update the minimum price if a lower price is found.
-        minimum_price = prices[i];
-      }
-      // Check if the profit from selling at the current price is higher than the max profit.
-      else if (prices[i] - minimum_price > max_profit) {
-        // Update the max profit if a higher profit is achieved.
-        max_profit = prices[i] - minimum_price;
-      }
+    for (const auto& price : prices) {
+      minimum_price = min(minimum_price, price);
+      int current_profit = price - minimum_price;
+      max_profix = max(max_profit, current_profit);
     }
-
+   
     return max_profit;
   }
 };
