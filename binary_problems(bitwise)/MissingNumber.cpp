@@ -36,10 +36,7 @@ public:
     int missing_number = nums.size();
     size_t nums_size = nums.size();
     for (size_t current_index = 0; current_index < nums_size; ++current_index) {
-      // XOR the current 'missing number' with the current index i.
       missing_number ^= current_index;
-
-      // XOR the result with the current array element nums[i].
       missing_number ^= nums[current_index];
     }
 
