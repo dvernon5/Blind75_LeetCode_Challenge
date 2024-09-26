@@ -18,9 +18,9 @@ class Solution {
 public:
   int getSum(int a, int b) {
     while (b != 0) {
-      int carry = a & b;  // Calculate the carry.
-      a = a ^ b;  // Sum without carry.
-      b = carry << 1;  // Shift the carry to the left.
+      int carry = a & b; 
+      a = a ^ b;
+      b = carry << 1;  
     }
   
     return a;
