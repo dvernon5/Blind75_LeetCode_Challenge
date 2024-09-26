@@ -41,21 +41,15 @@ public:
         return middle_index;
       }
       if (nums[left_index] <= nums[middle_index]) {
-        // If the right half is sorted
         if (target > nums[middle_index] || target < nums[left_index]) {
-          // If the target is in the right half, update the left pointer.
           left_index = middle_index + 1;
         } else {
-          // Otherwise, update the right pointer.
           right_index = middle_index - 1;
         }
       } else {
-        // If the left half is sorted
         if (target < nums[middle_index] || target > nums[right_index]) {
-          // If the target is in the left half, update the right pointer.
           right_index = middle_index - 1;
         } else {
-          // Otherwise, update the left pointer.
           left_index = middle_index + 1;
         }
       }
