@@ -23,16 +23,29 @@ class Solution {
 public:
   bool containsDuplicate(vector<int>& nums) {
     unordered_set<int> unique_numbers;
+    bool is_duplicate = false;
     for (auto num : nums) {
-      // Check if the current number is already in the unique_numbers set.
       if (unique_numbers.count(num) > 0) {
-        // If the number is already in the set, It's a duplicate, so return true.
         return true;
       }
-      // If the number is not in the set, add it to the set to keep track of unique numbers
       unique_numbers.insert(num);
     }
+    
+    return false;
+}
 
-    // If the loop completes without finding any duplicates, return false.
+
+// Alternative Solution:
+class Solution {
+public:
+  bool containsDuplicate(vector<int>& nums) {
+    unordered_set<int> unique_numbers;
+    for (auto num : nums) {
+      if (unique_numbers.find(num) != unique_numbers.end()) {
+        return true;
+      }
+      unique_numbers.insert(num);
+    }
+    
     return false;
 }
