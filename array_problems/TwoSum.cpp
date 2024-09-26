@@ -28,23 +28,19 @@
 */
 class Solution {
   vector<int> twoSum(vector<int> nums, int target) {
-    unordered_map<int, int> number_to_index_map // A map to store numbers and their indices.
+    unordered_map<int, int> number_to_index_map;
     vector<int> result;
-    size_t nums_size = nums.size();
-    for (size_t current_index = 0; current_index < nums_size; ++current_index) {
-      int complement = target - nums[current_index]; // Calculate the complement required to reach the target.
-      
-      // Check if complement exists, we found a pair that adds up to the target.
+    int nums_size = nums.size();
+    for (int current_index = 0; current_index < nums_size; ++current_index) {
+      int complement = target - nums[current_index];
       if (number_to_index_map.find(complement) != number_to_index_map.end()) {
-        result.push_back(number_to_index_map[complement]);
-        result.push_back(current_index);
-        return result;  // Return the result immediately since we found a valid pair.
+        int key_index = number_to_index_map.find(complement)->second; 
+        result.insert(result.end(), { current_index, key_index });
+        return result; 
       }
-      
-      // complement does not exist. Store the current number and its index in the map.
       number_to_index_map[current_index] = current_index;
     }
 
-    return result;  // Return an empty result if no valid pair is found.
+    return result;
   }
 };
