@@ -25,24 +25,14 @@
 class Solution {
 public:
   int maxSubArray(vector<int>& nums) {
-    int max_sum = INT_MIN; // Largest subarray sum, initialized as a very small value.
-    int current_sum = 0;   // Current subarray sum, initialized as 0. 
-    size_t nums_size = nums.size();
-    for (int current_index = 0; current_index < nums_size; ++current_index) {
-      // Adding the current eleemnt to the current subarray sum.
-      current_sum += nums[current_index];
-
-      // Check if current subarray sum is greater than the largest seen so far.
-      if (current_sum > max_sum) {
-        max_sum = current_sum;
-      }
-
-      // If the current subarray sum becomes negative, reset it to 0.
-      if (current_sum < 0) {
-        current_sum = 0;
-      }
+    int max_subarray = INT_MIN; 
+    int current_sum = 0;   
+    for (const auto& num : nums) {
+      current_sum += num;
+      max_subarray = max(max_subarray, current_sum);
+      current_sum = current_sum < 0 ? 0 : current_sum;
     }
 
-    return max_sum;
+    return max_subarray;
   }
 };
